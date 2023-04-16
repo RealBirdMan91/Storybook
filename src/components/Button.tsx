@@ -7,30 +7,29 @@ type Button = React.DetailedHTMLProps<
 
 interface Props extends Button {
   size?: "sm" | "lg";
-  btnType: "primary" | "secondary";
+  variant?: "primary" | "secondary";
+  disabled?: boolean;
 }
 
 export function Button({
   children,
   className,
-  size,
-  btnType,
+  size = "lg",
+  variant = "primary",
   ...props
 }: Props) {
   return (
-    <div className={className}>
-      <button
-        className={clsx(
-          "w-full rounded-lg disabled:opacity-50",
-          size === "lg" ? "py-4" : "py-3",
-          btnType === "secondary"
-            ? "bg-black-light text-white "
-            : "bg-primary text-black-light "
-        )}
-        {...props}
-      >
-        {children}
-      </button>
-    </div>
+    <button
+      className={clsx(
+        "w-full rounded-lg disabled:opacity-50",
+        size === "lg" ? "py-4" : "py-3",
+        variant === "secondary"
+          ? "bg-black-light text-white "
+          : "bg-primary text-black-light "
+      )}
+      {...props}
+    >
+      {children}
+    </button>
   );
 }

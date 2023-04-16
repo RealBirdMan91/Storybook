@@ -6,34 +6,48 @@ import { Button } from "../components/Button";
 const meta = {
   title: "Components/Button",
   component: Button,
+  parameters: {
+    viewport: {
+      defaultViewport: "mobile1",
+    },
+  },
 } satisfies Meta<typeof Button>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 // More on writing stories with args: https://storybook.js.org/docs/7.0/react/writing-stories/args
-export const Default: Story = {
+export const Primary: Story = {
   args: {
-    className: "m-4",
     children: "Button",
-    btnType: "primary",
+    variant: "primary",
   },
 };
 
-export const DisabledPrimary: Story = {
+export const Secondary: Story = {
   args: {
-    className: "m-4",
     children: "Button",
-    btnType: "primary",
+    variant: "secondary",
+  },
+};
+
+export const Disabled: Story = {
+  args: {
+    children: "Button",
     disabled: true,
   },
 };
 
-export const DisabledSecondary: Story = {
+export const Large: Story = {
   args: {
-    className: "m-4",
     children: "Button",
-    btnType: "secondary",
-    disabled: true,
+    size: "lg",
+  },
+};
+
+export const Small: Story = {
+  args: {
+    children: "Button",
+    size: "sm",
   },
 };
